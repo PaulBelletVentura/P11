@@ -1,31 +1,53 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../Header/header.css';
 import logo from './../../designs/img/argentBankLogo.png';
-import 'font-awesome/css/font-awesome.min.css'; // Importez le CSS de FontAwesome
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../actions/authactions';
 
 function Header() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user); // Obtenez les données de l'utilisateur depuis le store Redux
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    dispatch(logout());
+  };
+
   return (
     <nav className="main-nav">
-      <a className="main-nav-logo" href="./index.html">
+      <Link className="main-nav-logo" to="/">
         <img
           className="main-nav-logo-image"
-          src={logo} // Utilisez la variable "logo" comme source de l'image
+          src={logo}
           alt="Argent Bank Logo"
         />
-      
-      </a>
+      </Link>
       <div>
-        <a className="main-nav-item" href="./sign-in.html">
-          <i className="fa fa-user-circle"></i>
-          Sign In
-        </a>
+        {isAuthenticated ? (
+          <>
+            {user && <span>{user.firstName}</span>}
+
+            <button className="main-nav-item" onClick={handleSignOut}>
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <Link className="main-nav-item" to="/login">
+            <i className="fa fa-user-circle"></i>
+            Sign In
+          </Link>
+        )}
       </div>
-      
     </nav>
   );
 }
 
 export default Header;
+
+
+
+
+
+
 
