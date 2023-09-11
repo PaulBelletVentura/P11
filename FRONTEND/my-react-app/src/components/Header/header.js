@@ -26,7 +26,10 @@ function Header() {
       <div>
         {isAuthenticated ? (
           <>
-            
+           
+         
+           <span>{user}</span>
+
             <button className="main-nav-item" onClick={handleSignOut}>
               Sign Out
             </button>
