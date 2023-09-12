@@ -7,8 +7,10 @@ import { logout } from '../../actions/authactions';
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = useSelector((state) => state.auth.user); // Obtenez les données de l'utilisateur depuis le store Redux
   const dispatch = useDispatch();
+
+  // Accédez au prénom de l'utilisateur depuis responseUser.data.body
+  const firstName = useSelector((state) => state.auth.user ? state.auth.user.firstName : '');
 
   const handleSignOut = () => {
     dispatch(logout());
@@ -26,19 +28,21 @@ function Header() {
       <div>
         {isAuthenticated ? (
           <>
-           
-         
-           <span>{user}</span>
-
+            <span>{firstName}</span> {/* Afficher le prénom ici */}
             <button className="main-nav-item" onClick={handleSignOut}>
-              Sign Out
+              Sign Out!
             </button>
+            <Link className="main-nav-item" to="/userprofil">
+              User Profile
+            </Link>
+            
           </>
         ) : (
           <Link className="main-nav-item" to="/login">
             <i className="fa fa-user-circle"></i>
             Sign In
           </Link>
+          
         )}
       </div>
     </nav>
@@ -46,6 +50,8 @@ function Header() {
 }
 
 export default Header;
+
+
 
 
 
