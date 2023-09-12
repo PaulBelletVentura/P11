@@ -7,16 +7,30 @@ export const login = (userData) => {
       // Requête API pour connecter les données d'authentification
       const response = await axios.post('http://localhost:3001/api/v1/user/login', userData);
 
-      axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.body.token}`;
+      const authToken = response.data.body.token;
+      
+  
+      console.log(authToken);
+      
+     
+      
+     
 
-const responseUser = await axios.post('http://localhost:3001/api/v1/user/profile');
+      axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.body.token}`;
+      const responseUser = await axios.post('http://localhost:3001/api/v1/user/profile');
+      console.log(responseUser); // Ajoutez cette ligne pour afficher la réponse dans la console
+      
 
       // Si la requête de connexion réussit, action de succès de connexion
       dispatch({
         type: 'LOGIN_SUCCESS',
         payload: {
           token: response.data.body.token, // Token de connexion
-          user: responseUser.data.body.user, // Prénom de l'utilisateur ici
+          user: {
+            firstName: responseUser.data.body.firstName, // Prénom de l'utilisateur
+            lastName: responseUser.data.body.lastName,
+            email: responseUser.data.body.email,
+          },
         },
       });
       
