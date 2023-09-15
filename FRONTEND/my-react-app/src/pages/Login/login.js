@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../actions/authactions';
+import { useNavigate } from 'react-router-dom'; 
 import '../Login/login.css';
 
 const Login = () => {
@@ -10,6 +11,7 @@ const Login = () => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({
@@ -20,25 +22,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await dispatch(login(formData));
 
-      console.log(response.data); // "token" est présent dans la réponse ?
-  
-      // Réinitialisation du formulaire
+      console.log(response.data); 
+
+      // Réinitialisation formulaire
       setFormData({
         email: '',
         password: '',
       });
+
+      // Redirection vers /welcome après une connexion réussie
+      navigate('/welcome'); // 
     } catch (error) {
-      // erreur
+      
       console.error('Login error:', error.message);
     }
   };
 
   return (
-    <div>
+    <div className="bgdark">
       <section className="sign-in-content">
         <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
@@ -76,4 +81,6 @@ const Login = () => {
 };
 
 export default Login;
+
+
 

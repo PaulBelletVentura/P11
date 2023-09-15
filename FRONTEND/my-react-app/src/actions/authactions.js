@@ -13,12 +13,13 @@ export const login = (userData) => {
       console.log(authToken);
       
      
-      
+        // Stockage du token dans le localStorage
+        localStorage.setItem('authToken', authToken);
      
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.body.token}`;
       const responseUser = await axios.post('http://localhost:3001/api/v1/user/profile');
-      console.log(responseUser); // Ajoutez cette ligne pour afficher la réponse dans la console
+      console.log(responseUser); // Ligne pour afficher la réponse dans la console
       
 
       // Si la requête de connexion réussit, action de succès de connexion
@@ -30,6 +31,7 @@ export const login = (userData) => {
             firstName: responseUser.data.body.firstName, // Prénom de l'utilisateur
             lastName: responseUser.data.body.lastName,
             email: responseUser.data.body.email,
+            userName : responseUser.data.body.userName,
           },
         },
       });

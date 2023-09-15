@@ -19,6 +19,12 @@
   margin-right: 0.5rem;
 }
 
+.main-nav-item-signout {
+  margin-right: 0.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
 .main-nav-item:hover {
   text-decoration: underline;
 }
@@ -35,4 +41,8 @@
 
 .fa-user-circle {
   margin-right: 5px;
+}
+
+.username {
+  color: black;
 }
