@@ -21,21 +21,21 @@ const Accounts = () => {
   return (
     <div>
       <h2 className="sr-only">Accounts</h2>
-      {/* Première instance du composant SingleAccount */}
+      
       <SingleAccount
         title="Argent Bank Checking (x5846)"
         amount="1500 $"
         description="Available Balance"
       />
 
-      {/* Deuxième instance du composant SingleAccount */}
+     
       <SingleAccount
         title="Argent Bank Savings (x1234)"
         amount="2500 $"
         description="Available Balance"
       />
 
-      {/* Troisième instance du composant SingleAccount */}
+      
       <SingleAccount
         title="Argent Bank Credit Card (x9876)"
         amount="375 $"
