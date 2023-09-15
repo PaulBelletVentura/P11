@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Account from '../../components/Accounts/account';
+import Accounts from '../../components/Accounts/account';
 import './welcome.css'; 
 
 function Welcome() {
@@ -14,7 +14,7 @@ function Welcome() {
       <Link to="/userprofil">
         <button className="edit-button">Edit Name</button>
       </Link>
-      <Account />
+      <Accounts />
     </div>
   );
 }

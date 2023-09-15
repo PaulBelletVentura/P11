@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateUser } from '../../actions/useractions'; // Import action updateUser
 import { Link } from 'react-router-dom';
 import '../../pages/UserProfil/userprofil.css'
-import Account from '../../components/Accounts/account';
+import Accounts from '../../components/Accounts/account';
 
 function UserProfile() {
   const user = useSelector((state) => state.auth.user); // Récupération des données de l'utilisateur depuis le store Redux
@@ -62,7 +62,7 @@ function UserProfile() {
         </Link>
         </div>
       </div>
-      <Account />
+      <Accounts />
     </div>
   );
 }
