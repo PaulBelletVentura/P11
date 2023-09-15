@@ -21,7 +21,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: false,
         user: null,
-        token: null, // En cas d'échec de connexion, effacez le token (mettez-le à null)
+        token: null, // En cas d'échec de connexion, effacement le token (mis à null)
         error: action.payload,
       };
 
@@ -30,9 +30,16 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: false,
         user: null,
-        token: null, // Effacez le token en cas de déconnexion réussie
+        token: null, // Effacement du token en cas de déconnexion réussie
         error: null,
       };
+
+case 'UPDATE_USER_SUCCESS':
+  return {
+    ...state,
+    user: action.payload.user, // Mise à jour utilisateur dans le store Redux
+  };
+
 
     default:
       return state;
