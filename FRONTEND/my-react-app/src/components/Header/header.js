@@ -5,12 +5,19 @@ import logo from './../../designs/img/argentBankLogo.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions/authactions';
 
+/**
+ * Composant représentant l'en-tête de l'application.
+ * @returns {JSX.Element} Composant de l'en-tête.
+ */
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
   const userName = useSelector((state) => state.auth.user ? state.auth.user.userName : '');
 
+  /**
+   * Gère la déconnexion de l'utilisateur.
+   */
   const handleSignOut = () => {
     dispatch(logout());
   };
@@ -27,9 +34,7 @@ function Header() {
       <div>
         {isAuthenticated ? (
           <>
-          
             <Link className="main-nav-item" to="/userprofil">
-              
               {userName}
             </Link>
             <Link className="main-nav-item-signout" to="#" onClick={handleSignOut}>
@@ -48,6 +53,7 @@ function Header() {
 }
 
 export default Header;
+
 
 
 

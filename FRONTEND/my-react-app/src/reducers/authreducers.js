@@ -37,7 +37,7 @@ const authReducer = (state = initialState, action) => {
 case 'UPDATE_USER_SUCCESS':
   return {
     ...state,
-    user: action.payload.user, // Mise à jour utilisateur dans le store Redux
+    user: action.payload.user, // Mise à jour l'utilisateur dans le store Redux
   };
 
 

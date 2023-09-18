@@ -110,6 +110,22 @@ paths:
           name: month
           type: string
           description: The month for which transactions should be retrieved
+        - in: query
+          name: transactionType
+          type: string
+          description: Filter by transaction type (e.g., income, expense)
+        - in: query
+          name: category
+          type: string
+          description: Filter by transaction category
+        - in: query
+          name: note
+          type: string
+          description: Filter by transaction note
+        - in: query
+          name: accountNumber
+          type: string
+          description: Filter by account number
       produces:
         - application/json
       responses:
@@ -125,7 +141,7 @@ paths:
     get:
       tags:
         - Transaction Module
-      summary: Get Transactions Details
+      summary: Get Transaction Details
       description: Retrieve details of a specific transaction.
       parameters:
         - in: path
@@ -148,7 +164,7 @@ paths:
       tags:
         - Transaction Module
       summary: Update Transaction Details
-      description: Update details of a specific transaction.
+      description: Update details of a specific transaction. Can update category and note, but not transaction type.
       parameters:
         - in: path
           name: transactionId
@@ -157,7 +173,7 @@ paths:
           required: true
         - in: body
           name: body
-          description: Updated transaction data
+          description: Updated transaction data (category and note can be updated).
           required: true
           schema:
             $ref: '#/definitions/Transaction'
@@ -174,24 +190,19 @@ paths:
           description: Transaction not found
         '500':
           description: Internal Server Error
-    delete:
+  /transactions/accounts:
+    get:
       tags:
         - Transaction Module
-      summary: Delete a Transaction Details
-      description: Delete a specific transaction.
-      parameters:
-        - in: path
-          name: transactionId
-          type: string
-          description: ID of the transaction to delete.
-          required: true
+      summary: Get User Accounts
+      description: Retrieve the list of user accounts.
       produces:
         - application/json
       responses:
-        '204':
-          description: Transaction details deleted successfully
-        '404':
-          description: Transaction details not found
+        '200':
+          description: User accounts retrieved successfully
+          schema:
+            $ref: '#/definitions/UserAccountList'
         '500':
           description: Internal Server Error
 definitions:
@@ -251,14 +262,38 @@ definitions:
         description: Date of transaction.
       description:
         type: string
-        description: Transaction description.  
+        description: Transaction description.
       amount:
         type: number
         description: Transaction amount.
       balance:
         type: number
         description: Current balance amount.
+      transactionType:
+        type: string
+        description: Type of transaction (e.g., income, expense).
+      category:
+        type: string
+        description: Transaction category.
+      note:
+        type: string
+        description: Transaction note.
+      accountNumber:
+        type: string
+        description: Account number for the transaction.
   TransactionList:
     type: array
     items:
       $ref: '#/definitions/Transaction'
+  UserAccount:
+    properties:
+      accountNumber:
+        type: string
+        description: Account number.
+      accountName:
+        type: string
+        description: Account name.
+  UserAccountList:
+    type: array
+    items:
+      $ref: '#/definitions/UserAccount'

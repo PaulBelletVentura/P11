@@ -1,6 +1,10 @@
-import "../Footer/footer.css";
+import React from 'react';
+import '../Footer/footer.css';
 
-
+/**
+ * Composant représentant le pied de page de l'application.
+ * @returns {JSX.Element} Composant du pied de page.
+ */
 function Footer() {
     return (
         <footer className="footer">

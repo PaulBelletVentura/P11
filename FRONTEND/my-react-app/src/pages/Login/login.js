@@ -4,6 +4,11 @@ import { login } from '../../actions/authactions';
 import { useNavigate } from 'react-router-dom'; 
 import '../Login/login.css';
 
+/**
+ * Composant de connexion utilisateur.
+ * Permet aux utilisateurs de se connecter en fournissant leur adresse e-mail et leur mot de passe.
+ * @returns {JSX.Element} Composant de connexion utilisateur.
+ */
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -13,6 +18,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
+  /**
+   * Gère le changement des valeurs des champs de formulaire.
+   * @param {Event} e - L'événement de changement.
+   */
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,6 +29,10 @@ const Login = () => {
     });
   };
 
+  /**
+   * Gère la soumission du formulaire de connexion utilisateur.
+   * @param {Event} e - L'événement de soumission du formulaire.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -28,16 +41,15 @@ const Login = () => {
 
       console.log(response.data); 
 
-      // Réinitialisation formulaire
+      // Réinitialisation du formulaire
       setFormData({
         email: '',
         password: '',
       });
 
       // Redirection vers /welcome après une connexion réussie
-      navigate('/welcome'); // 
+      navigate('/welcome'); 
     } catch (error) {
-      
       console.error('Login error:', error.message);
     }
   };

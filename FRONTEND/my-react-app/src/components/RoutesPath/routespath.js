@@ -7,6 +7,11 @@ import Logout from "../../pages/Logout/logout";
 import Welcome from "../../pages/Welcome/welcome"
 import Erreur404 from "../../pages/erreur404/erreur404";
 
+/**
+ * Composant de gestion des routes de l'application.
+ * Utilise React Router pour définir les routes et associer les composants aux URL.
+ * @returns {JSX.Element} Composant de gestion des routes.
+ */
 function RoutesPath() {
     return (
         <HashRouter>
@@ -25,4 +30,5 @@ function RoutesPath() {
 }
 
 export default RoutesPath;
+
 

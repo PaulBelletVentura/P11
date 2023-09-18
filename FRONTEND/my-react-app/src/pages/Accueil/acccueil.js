@@ -1,10 +1,15 @@
+import React from 'react';
 import "../../pages/Accueil/accueil.css";
-import FeaturesItem from "../../components/Feature/featureItem";
+import FeatureItem from "../../components/Feature/featureItem"; // Correction ici
 import iconChat from "../../designs/img/icon-chat.png";
 import iconMoney from "../../designs/img/icon-money.png";
 import iconSecurity from "../../designs/img/icon-security.png";
 
-
+/**
+ * Composant pour la page d'accueil de l'application.
+ * Affiche des informations promotionnelles et des fonctionnalités.
+ * @returns {JSX.Element} Composant de la page d'accueil.
+ */
 function Accueil() {
     return (
         <main>
@@ -19,12 +24,28 @@ function Accueil() {
             </div>
             <section className="features">
                 <h2 className="sr-only">Features</h2>
-                <FeaturesItem imgSrc={iconChat} titre="You are our #1 priority" description="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes." alt="Chat Icon" />
-                <FeaturesItem imgSrc={iconMoney} titre="More savings means higher rates" description="The more you save with us, the higher your interest rate will be!" alt="Money Icon" />
-                <FeaturesItem imgSrc={iconSecurity} titre="Security you can trust" description="We use top of the line encryption to make sure your data and money is always safe." alt="Security Icon"/>
+                <FeatureItem
+  imgSrc={iconChat}
+  titre="You are our #1 priority"
+  description="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."
+  imgAlt="Chat Icon" 
+/>
+<FeatureItem
+  imgSrc={iconMoney}
+  titre="More savings means higher rates"
+  description="The more you save with us, the higher your interest rate will be !"
+  imgAlt="Money Icon" 
+/>
+<FeatureItem
+  imgSrc={iconSecurity}
+  titre="Security you can trust"
+  description="We use top of the line encryption to make sure your data and money is always safe."
+  imgAlt="Security Icon" 
+/>
             </section>
         </main>
     );
 }
 
 export default Accueil;
+

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUserData } from './useractions'; // Import action de mise à jour des données utilisateur
+import { updateUserData } from './useractions'; // Import de l'action de mise à jour des données utilisateur
 
+/**
+ * Composant pour la mise à jour des informations du profil utilisateur.
+ * @returns {JSX.Element} Composant de mise à jour du profil utilisateur.
+ */
 const UpdateProfile = () => {
   const dispatch = useDispatch();
   const currentUserData = useSelector((state) => state.userData); // Données utilisateur actuelles depuis le store
@@ -10,11 +14,15 @@ const UpdateProfile = () => {
     // Création d'un état local pour stocker les données mises à jour
     // Initialisation avec les données utilisateur actuelles
     name: currentUserData.name,
-    // Ajout champfs utilisateur 
-    firstName: currentUserData.firstName, // Ajout prénomp utilisateur
-    lastName: currentUserData.lastName, // Ajout nom utilisateur
+    // Ajout de champs utilisateur
+    firstName: currentUserData.firstName, // Ajout du prénom de l'utilisateur
+    lastName: currentUserData.lastName, // Ajout du nom de l'utilisateur
   });
 
+  /**
+   * Gère le changement des valeurs des champs de formulaire.
+   * @param {Event} e - L'événement de changement.
+   */
   const handleChange = (e) => {
     setUpdatedUserData({
       ...updatedUserData,
@@ -22,10 +30,14 @@ const UpdateProfile = () => {
     });
   };
 
+  /**
+   * Gère la soumission du formulaire de mise à jour des données utilisateur.
+   * @param {Event} e - L'événement de soumission du formulaire.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Dispatch action de mise à jour des données utilisateur avec les données mises à jour
+    // Dispatche l'action de mise à jour des données utilisateur avec les données mises à jour
     dispatch(updateUserData(updatedUserData));
   };
 
@@ -72,4 +84,5 @@ const UpdateProfile = () => {
 };
 
 export default UpdateProfile;
+
 

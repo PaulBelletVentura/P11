@@ -4,8 +4,12 @@ import { useSelector } from 'react-redux';
 import Accounts from '../../components/Accounts/account';
 import './welcome.css'; 
 
+/**
+ * Composant de bienvenue affichant le nom de l'utilisateur et proposant de modifier son nom.
+ * @returns {JSX.Element} Composant de bienvenue.
+ */
 function Welcome() {
-  // Récupératio données utilisateur depuis le store Redux
+  // Récupération des données de l'utilisateur depuis le store Redux
   const user = useSelector((state) => state.auth.user);
 
   return (
@@ -20,3 +24,4 @@ function Welcome() {
 }
 
 export default Welcome;
+
