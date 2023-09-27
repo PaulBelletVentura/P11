@@ -1,9 +1,9 @@
 import React from 'react';
 import "../../pages/Accueil/accueil.css";
 import FeatureItem from "../../components/Feature/featureItem"; // Correction ici
-import iconChat from "../../designs/img/icon-chat.png";
-import iconMoney from "../../designs/img/icon-money.png";
-import iconSecurity from "../../designs/img/icon-security.png";
+import iconChat from "../../designs/img/icon-chat.webp";
+import iconMoney from "../../designs/img/icon-money.webp";
+import iconSecurity from "../../designs/img/icon-security.webp";
 
 /**
  * Composant pour la page d'accueil de l'application.

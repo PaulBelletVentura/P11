@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Header/header.css';
-import logo from './../../designs/img/argentBankLogo.png';
+import logo from './../../designs/img/argentBankLogo.webp';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../actions/authactions';
 
